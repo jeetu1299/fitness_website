@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <style>
+      body{
+        background-image: url("{% static 'img/user.jpg' %}");
+        background-position: center;
+        background-size: cover;
+      }
+      .container{
+        padding-left: 30px;
+        padding-bottom: 50px;
+      }
+      .abc{
+        text-align: center;
+        color: #e3e7f1;
+      }
+      .card {
+        box-shadow: 0 50px 50px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+        position: relative;
+        background-color: #e3e7f1;
+
+      }
+      body{
+        margin: 0%;
+      }
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+</style>
+  <title>User</title>
+   
+</head>
+  <body>
+    <div class="container">
+      <h1 class="abc">Hello , {{user.username}}</h1>
+    </div>
+    <div class="total">
+    <div class="card">
+      <h1>User Name</h1>
+      <p class="title">Plan: {{profile.name}}</p>
+      <p class="title">Trainer Name: {{trainer.name}}</p>
+      <p class="title">Category: {{customer.pricing}}</p>
+</div>
+{% endblock content%}

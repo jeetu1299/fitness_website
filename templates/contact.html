@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <title>Contact Us form</title>
+  <style>
+  body{
+    margin: 0%;
+  }
+  </style>
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+	
+<div class="wrapper">
+  <div class="contact-form">
+    <div class="input-fields">
+      <input type="text" class="input" placeholder="Name">
+      <input type="email" class="input" placeholder="Email Address">
+      <input type="tel" class="input" placeholder="Phone" maxlength="10">
+      <input type="text" class="input" placeholder="Subject">
+    </div>
+    <div class="msg">
+      <textarea placeholder="Message"></textarea>
+      <div class="btn" onclick="myFunction()">send</div>
+    </div>
+	<script>
+		function myFunction() {
+			alert("Thank You for your comments");
+		}
+	</script>
+  </div>
+</div>	
+{% endblock content %}

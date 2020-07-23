@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <style>
+    body{
+      margin: 0px;
+      background-color: #f5f0e3;
+    }
+    .container{
+      padding-top: 50px
+    }
+    h1{
+      text-align: center;
+    }
+</style>
+    <meta charset="utf-8">
+    <title>About Us</title>
+
+  </head>
+  <body>
+      <h1>ABOUT US</h1>
+    <div class="container">
+      <img src="{% static 'img/about.jpg' %}" height="450px" width="100%" alt="">
+    </div>
+    <div class="container">
+      <p>I used to absolutely love boutique fitness classes. With great instruction, heart-pumping music, fun choreography and high caloric burn--what was not to love? Classes suddenly made my workouts enjoyable. But attending a fitness class wasn't always easy. I frequently found myself over-scheduled and cash-strapped; unable to justify frequent attendance to my favorite studios. Even worse, whenever I traveled or went home for the holidays, I was stuck relying on old-school DVDs that hadn't evolved since the 90's. So I decided to take matters into my own hands and start a company that would make fitness classes accessible and affordable. There was so much incredible innovation going on in the industry, but most of the action was concentrated in urban cities, like New York and Los Angeles. Concepts like barre fusion, yoga-boxing, and metcon sports conditioning didn’t have to be limited to elite customers in metropolitan areas. With digital video, there could be access to all of those great classes for anyone with an internet connection.I like fitness because a great workout makes people feel confident. It makes me feel confident. So much of at-home fitness today is one-size-fits-all. But we’re all unique, with different interests and motivational triggers. My dream is for Booya Fitness to be the place where you can discover workouts that genuinely excite you and make you feel great about yourself.I hope you’ll join me on this journey :)
+      </P>
+    </div>
+   
+{% endblock content %}

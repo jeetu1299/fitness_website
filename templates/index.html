@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<head>
+<link rel="stylesheet" href="{% static 'css/master.css'%}">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.picture{
+  overflow: hidden;
+  background-color: rgb(24, 91, 179);
+}
+
+.picture img {
+  float: left;
+  clear:both;
+}
+
+section{
+  padding: 0%;
+}
+.first{
+  background-color: #d2fafb;
+  height : 400px;
+  padding-top: 0px ;
+  padding: 0px;
+  margin: 0px;
+  display:flex;
+}
+.container {
+  position :relative;
+  margin : 0%;
+  padding-bottom: 0%;
+}
+.color{
+  background-color:white;
+  height : 320px; 
+  margin: 0%;
+  padding: 0%;
+}
+
+.container h2{
+  margin: 0%;
+}
+.text-block {
+  position: absolute;
+  top: 0px;
+  background-color: #696464;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+  margin-left: 50%;
+  height: 400px;
+  font-style:Arial;
+  text-decoration: none;
+}
+.text-block1 {
+  position: absolute;
+  top: 0px;
+  background-color: #ffd2a5;
+  color: #393e46;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+  margin-right:50%;
+  height: 400px;
+  font-style:Arial;
+  text-decoration: none;
+  margin-bottom: 0%;
+  padding-bottom: 0%;
+}
+.img{
+  height: 400px;
+  margin: 0%;
+  width:50%;
+}
+.img1{
+  height: 400px;
+  margin-left: 50%;
+  margin-bottom:0%;
+  width:50%;
+}
+.bmi{
+  height: 250px;
+  margin-left: 200px;
+}
+.result{
+  position: absolute;
+  margin-left: 52%;
+}
+.ftr{
+  margin: 0%;
+}
+@media only screen and (max-width: 800px) {
+  .text-block {
+    width: 100%;
+    padding: 0%;
+    position: relative;
+    margin: 0%;
+    bottom: 0%;
+    top: 0%;
+  }
+  .text-block1 {
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+    position: relative;
+    bottom: 0%;
+    top: 0%
+  }
+  .img{
+    width: 100%;
+    margin: 0%;
+    position: relative;
+    padding: 0%;
+    bottom: 0%;
+    top: 0%
+  }
+  .img1{
+    width: 100%;
+    position: relative;
+    margin: 0%;
+    padding: 0%;
+    bottom: 0%;
+    top: 0%
+  }
+}
+</style>
+<script type="text/javascript">
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    var feet = parseInt(document.getElementById("feet").value);
+    var inches = parseInt(document.getElementById("inches").value);
+    if (document.getElementById("weight").value.length == 0)
+      { 
+         alert("Enter Weight");  	
+         return false; 
+      }  	
+    else
+      var weight = parseInt(document.getElementById("weight").value);
+    console.log(feet);
+    var height1 = feet * 0.3048;
+    var height = height1 + inches * 0.0254; 
+    var result = weight/(height*height);
+    var display="";
+    if(result<18.5){
+      display ="Underweight";}
+    else if(result>18.5 && result<24.9){
+      display="Normal";}
+    else if(result>25 && result<29.9){
+      display = "Overweight";}
+    else{
+      display ="Obese";}
+    responseText1 = "Your BMI : "+ result ;
+    responseText2 = "Your are "+ display ;
+    document.getElementById("rel").innerHTML="RESULT";
+    document.getElementById("sol1").innerHTML = responseText1;
+    document.getElementById("sol2").innerHTML = responseText2;
+    }
+  };
+
+  function cal(){
+  xhttp.open('GET','',true);
+  xhttp.send();
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <img class="img" src="{% static 'img/first.jpg'%}" alt="Norway" >
+  <div class="text-block">
+    <h2>Fitness</h2>
+    <br>
+    <h3>This is our info</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+</div>
+<div class="container">
+  <img class="img1" src="{% static 'img/food.jpg'%}" alt="Norway">
+  <div class="text-block1">
+    <h2>Food</h2>
+    <br>
+    <h3>Thanks</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+</div>
+    <div class="container color">
+      <div class="bmi">
+        <h2>Calculate your BMI</h2>
+        <div class="result">
+            <h2 id ="rel"></h2>
+            <h3 id="sol1"></h3>
+            <h3 id="sol2"></h3>
+        </div>
+        <h3>Height</h3>
+        <h4>Feet</h4>
+        <select id="feet" name="feet">
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+        <label><h4>Inches</h4></label> 
+        <select id="inches" name="inches">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+          </select>
+        <h3><label for="Weight">Weight: </label><input type="text" id="weight" placeholder="Your Weight.."></h3>
+        <button type="button" onclick="cal()">Submit</button> 
+      </div>
+    </div>
+<div>
+  {% endblock content %}

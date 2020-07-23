@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+body{
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+	text-align: center;
+	padding-top: 20px
+}
+
+.picture{
+  overflow: hidden;
+  background-color: rgb(24, 91, 179);
+}
+
+.picture img {
+  float: left;
+  clear:both;
+}
+
+.container {
+  position :relative;
+}
+
+/* Bottom right text */
+.img{
+  height: 400px;
+  width: 400px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.xyz{
+  float: left;
+  padding: 15px;
+  padding-left: 145px;
+  padding-top: 50px;
+} 
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+.pad{
+      margin-top: 50%;
+}
+</style>
+	<title>Trainers</title>
+</head>
+<body>
+
+  <div>
+	 <h1>MEET OUR TRAINERS</h1>
+  </div>
+  {% for trainer in trainers %}
+  <div class="container">
+    <div class="xyz">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="{{trainer.image.url}}" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h1>{{trainer.name}}</h1> 
+            <p><h3>Category : {{trainer.mealId.name}}</h3></p> 
+            <p><h4>Rating : {{trainer.rating}}</h4></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+
+  </div>
+{% endblock content %}
